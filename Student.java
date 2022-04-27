@@ -1,59 +1,58 @@
-
 public class Student {
 	
-	Course c1;
-	Course c2;
-	Course c3;
+	Course tran;
+	Course dada;
+	Course pot;
 	String name;
 	String stuNo;
 	String classes;
-	double avarage;
+	double average;
 	boolean isPass;
 	
-	Student(String name, String stuNo, String classes, Course c1, Course c2, Course c3){
+	Student(String name, String stuNo, String classes, Course tran, Course dada, Course pot){
 		this.name = name;
 		this.stuNo = stuNo;
 		this.classes = classes;
-		this.c1 = c1;
-		this.c2 = c2;
-		this.c3 = c3;
-		this.avarage = 0.0;
+		this.tran = tran;
+		this.dada = dada;
+		this.pot = pot;
+		this.average = 0.0;
 		this.isPass = false;
 	}
 	
-	void  addBulkExamNote (int note1, int note2, int note3, int sozluNote1, int sozluNote2, int sozluNote3){
-		if (note1 >= 0 && note1 <= 100 && sozluNote1 >= 0 && sozluNote1 <= 100){
-			this.c1.note = note1; //dýþardan alýnan nota eþit.
-			this.c1.sozluNote = sozluNote1;
-		} // varsayýlan deðer 0 olarak zaten verildi.
-		if (note2 >= 0 && note2 <= 100 && sozluNote2 >= 0 && sozluNote2 <= 100){
-			this.c2.note = note2;
-			this.c2.sozluNote = sozluNote2;
+	void  addBulkExamNote (int note1, int note2, int note3, int perfNote1, int perfNote2, int perfNote3){
+		if (note1 >= 0 && note1 <= 100 && perfNote1 >= 0 && perfNote1 <= 100){
+			this.tran.note = note1; 
+			this.tran.perfNote = perfNote1;
+		} 
+		if (note2 >= 0 && note2 <= 100 && perfNote2 >= 0 && perfNote2 <= 100){
+			this.dada.note = note2;
+			this.dada.perfNote = perfNote2;
 		}
-		if (note3 >= 0 && note3 <= 100 && sozluNote3 >= 0 && sozluNote3 <= 100){
-			this.c3.note = note3;
-			this.c3.sozluNote = sozluNote3;
+		if (note3 >= 0 && note3 <= 100 && perfNote3 >= 0 && perfNote3 <= 100){
+			this.pot.note = note3;
+			this.pot.perfNote = perfNote3;
 		}
-	}// note deðerlerine girdi saðlanýyor. 
+	} 
 	
 	void isPass(){
 		System.out.println("*****************");
-		this.avarage = ((this.c1.note + this.c2.note + this.c3.note) * 0.8 + (this.c1.sozluNote + this.c2.sozluNote + this.c3.sozluNote * 0.2) / 3.0);
-		if (this.avarage > 55){
-			System.out.println("Geçtiniz!!!");
+		this.average = ((this.tran.note + this.dada.note + this.pot.note) * 0.8 + (this.tran.perfNote + this.dada.perfNote + this.pot.perfNote * 0.2) / 3.0);
+		if (this.average > 55){
+			System.out.println("You passed!!!");
 			this.isPass = true;
 		} else {
-			System.out.println("Sýnýfta Kaldýnýz!!!!!!!!");
+			System.out.println("You failed!!!!!!!!");
 			this.isPass = false;
 		}
 		printNote();
 	}
 	
 	void printNote(){
-		System.out.println(this.c1.name + " Note\t:" + this.c1.note + "\t" + this.c1.name + "Sözlü Notu\t:" + this.c1.sozluNote);
-		System.out.println(this.c2.name + " Note\t:" + this.c2.note + "\t" + this.c2.name + "Sözlü Notu\t:" + this.c2.sozluNote);
-		System.out.println(this.c3.name + " Note\t:" + this.c3.note + "\t" + this.c3.name + "Sözlü Notu\t:" + this.c3.sozluNote);
-		System.out.println("Genel Ortalamanýz: " + this.avarage + "\t" + "Sözlü Ortalamanýz: " + ((this.c1.sozluNote + this.c2.sozluNote + this.c3.sozluNote) / 3.0) + "\t" + "Not Ortalamanýz: " + (this.c1.note + this.c2.note + this.c3.note) / 3.0);
+		System.out.println(this.tran.name + " Note\t:" + this.tran.note + "\t" + this.tran.name + "Performance Note\t:" + this.tran.perfNote);
+		System.out.println(this.dada.name + " Note\t:" + this.dada.note + "\t" + this.dada.name + "Performance Note\t:" + this.dada.perfNote);
+		System.out.println(this.pot.name + " Note\t:" + this.pot.note + "\t" + this.pot.name + "Performance Note\t:" + this.pot.perfNote);
+		System.out.println("General Average: " + this.average + "\t" + "General Average of Performance Note: " + ((this.tran.perfNote + this.dada.perfNote + this.pot.perfNote) / 3.0) + "\t" + "Note Average: " + (this.tran.note + this.dada.note + this.pot.note) / 3.0);
 	}
 	
 
